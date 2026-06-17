@@ -11,10 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================================
 function switchTab(tab) {
     currentTab = tab;
-    document.getElementById('tab-login').className = tab === 'login' ? 'w-1/2 py-2 text-blue-600 border-b-2 border-blue-600 font-semibold' : 'w-1/2 py-2 text-gray-500 font-semibold';
-    document.getElementById('tab-register').className = tab === 'register' ? 'w-1/2 py-2 text-blue-600 border-b-2 border-blue-600 font-semibold' : 'w-1/2 py-2 text-gray-500 font-semibold';
+    // Usa a classe 'active' do nosso novo CSS
+    document.getElementById('tab-login').className = tab === 'login' ? 'tab active' : 'tab';
+    document.getElementById('tab-register').className = tab === 'register' ? 'tab active' : 'tab';
     document.getElementById('submit-btn').innerText = tab === 'login' ? 'Entrar' : 'Criar Conta';
-    showAlert('', ''); // Limpa alertas
+    showAlert('', '');
 }
 
 function showAlert(message, type) {
@@ -24,7 +25,8 @@ function showAlert(message, type) {
         return;
     }
     alertBox.innerText = message;
-    alertBox.className = `mb-4 p-3 rounded text-sm text-center font-medium ${type === 'error' ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'}`;
+    // Usa as classes 'error' ou 'success' do nosso CSS
+    alertBox.className = `alert ${type}`; 
     alertBox.classList.remove('hidden');
 }
 
