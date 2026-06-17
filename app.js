@@ -61,7 +61,18 @@ async function register(email, password) {
             switchTab('login');
         } else {
             const error = await response.json();
-            showAlert(error.detail || 'Erro ao criar conta', 'error');
+            let errorMsg = 'Erro ao criar conta';
+            
+            // Verifica se o erro é uma lista de validação do Pydantic (FastAPI)
+            if (Array.isArray(error.detail)) {
+                // Pega a mensagem do primeiro erro e remove o prefixo padrão do Pydantic
+                errorMsg = error.detail[0].msg.replace('Value error, ', ''); 
+            } else if (error.detail) {
+                // Para erros comuns que retornam apenas uma string
+                errorMsg = error.detail;
+            }
+            
+            showAlert(errorMsg, 'error');
         }
     } catch (error) {
         showAlert('Erro de conexão com o servidor.', 'error');
