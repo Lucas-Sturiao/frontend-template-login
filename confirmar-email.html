@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar E-mail - Sistema</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 h-screen flex justify-center items-center p-6 text-gray-800">
+
+    <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-100 text-center">
+        <div id="loading-icon" class="flex justify-center mb-4 animate-pulse">
+            <svg class="w-12 h-12 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+        </div>
+
+        <h2 class="text-2xl font-bold mb-2">Verificando E-mail</h2>
+        
+        <div id="status-message" class="text-gray-600 mb-6 min-h-[40px]">
+            Aguarde um momento enquanto validamos seu link...
+        </div>
+
+        <a href="index.html" id="btn-login" class="hidden inline-block w-full bg-blue-600 text-white font-semibold py-2.5 rounded-lg hover:bg-blue-700 transition-colors">
+            Ir para o Login
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            // 1. Pega a URL atual e extrai apenas a parte do "?token=..."
+            const urlParams = new URLSearchParams(window.location.search);
+            const token = urlParams.get('token');
+            
+            const statusMessage = document.getElementById('status-message');
+            const loadingIcon = document.getElementById('loading-icon');
+            const btnLogin = document.getElementById('btn-login');
+
+            // Se o usuário abrir a página sem nenhum token na URL
+            if (!token) {
+                loadingIcon.innerHTML = `<svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+                statusMessage.innerHTML = "<span class='text-red-500 font-medium'>Link inválido ou ausente.</span>";
+                btnLogin.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                // 2. Envia o token para a nossa API do FastAPI
+                const response = await fetch(`http://127.0.0.1:8000/users/confirm-email?token=${token}`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Sucesso: Muda o ícone para um check verde e exibe a mensagem
+                    loadingIcon.innerHTML = `<svg class="w-12 h-12 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+                    statusMessage.innerHTML = `<span class='text-green-600 font-medium'>${data.mensagem}</span>`;
+                } else {
+                    // Erro: Link expirado ou já utilizado
+                    loadingIcon.innerHTML = `<svg class="w-12 h-12 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+                    statusMessage.innerHTML = `<span class='text-red-500 font-medium'>${data.detail}</span>`;
+                }
+            } catch (error) {
+                // Erro de rede (API desligada)
+                loadingIcon.innerHTML = `<svg class="w-12 h-12 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+                statusMessage.innerHTML = "<span class='text-gray-500 font-medium'>Erro ao conectar com o servidor. Verifique se a API está rodando.</span>";
+            } finally {
+                // Independente do resultado, mostra o botão para voltar ao index
+                btnLogin.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
