@@ -15,33 +15,32 @@
 </head>
 <body class="text-gray-800 dark:text-gray-100 bg-gray-50 dark:bg-gray-900 antialiased h-screen flex flex-col transition-colors duration-300">
     <button onclick="toggleTheme()" class="fixed top-4 left-4 p-2.5 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-yellow-400 hover:bg-gray-300 dark:hover:bg-gray-600 transition-all z-50 shadow-sm">
-        <svg id="theme-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            </svg>
+        <svg id="theme-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"></svg>
     </button>
-    <nav id="navbar" class="hidden-view bg-white shadow-sm border-b border-gray-100 px-6 py-4 flex justify-between items-center">
-        <div class="font-bold text-xl text-blue-600 tracking-tight">AppTemplate</div>
+
+    <nav id="navbar" class="hidden-view bg-white dark:bg-gray-800 shadow-sm border-b border-gray-100 dark:border-gray-700 px-6 py-4 flex justify-between items-center transition-colors duration-300">
+        <div class="font-bold text-xl text-blue-600 dark:text-blue-400 tracking-tight">AppTemplate</div>
         <div class="flex items-center gap-4">
-            <button onclick="navigate('dashboard')" id="nav-dashboard-btn" class="hidden-view text-sm font-medium text-gray-600 hover:text-blue-600">Dashboard</button>
-            <button onclick="navigate('profile')" class="text-sm font-medium text-gray-600 hover:text-blue-600">Meu Perfil</button>
-            <button onclick="logout()" class="text-sm px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 font-medium transition-colors">Sair</button>
+            <button onclick="navigate('dashboard')" id="nav-dashboard-btn" class="hidden-view text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Dashboard</button>
+            <button onclick="navigate('profile')" class="text-sm font-medium text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">Meu Perfil</button>
+            <button onclick="logout()" class="text-sm px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 font-medium transition-colors">Sair</button>
         </div>
     </nav>
 
     <main class="flex-1 flex justify-center items-center p-6 fade-in">
 
-        <div id="view-login" class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hidden-view fade-in">
-            <h2 class="text-2xl font-bold text-center mb-6">Bem-vindo de volta</h2>
+        <div id="view-login" class="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700 hidden-view fade-in transition-colors duration-300">
+            <h2 class="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-white">Bem-vindo de volta</h2>
             <form id="form-login" class="space-y-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
-                    <input type="email" id="login-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">E-mail</label>
+                    <input type="email" id="login-email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Senha</label>
                     <div class="relative">
-                        <input type="password" id="login-password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all pr-10">
-                        
-                        <button type="button" onclick="togglePassword('login-password', 'icon-login')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-blue-600 transition-colors">
+                        <input type="password" id="login-password" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all pr-10">
+                        <button type="button" onclick="togglePassword('login-password', 'icon-login')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
                             <svg id="icon-login" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -50,89 +49,118 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-between mt-2 mb-4">
-                    <label class="flex items-center text-sm text-gray-600 cursor-pointer">
+                    <label class="flex items-center text-sm text-gray-600 dark:text-gray-400 cursor-pointer">
                         <input type="checkbox" id="remember-me" class="mr-2 w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 cursor-pointer">
                         Lembrar de mim
                     </label>
-                    <button type="button" onclick="navigate('forgot-password')" class="text-sm text-blue-600 font-medium hover:underline">
+                    <button type="button" onclick="navigate('forgot-password')" class="text-sm text-blue-600 dark:text-blue-400 font-medium hover:underline">
                         Esqueceu a senha?
                     </button>
                 </div>
-                <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2.5 rounded-lg hover:bg-blue-700 transition-colors">Entrar</button>
+                <button type="submit" class="w-full bg-blue-600 dark:bg-blue-500 text-white font-semibold py-2.5 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors">Entrar</button>
+                <div class="mt-6">
+                    <div class="relative">
+                        <div class="absolute inset-0 flex items-center">
+                            <div class="w-full border-t border-gray-300 dark:border-gray-600"></div>
+                        </div>
+                        <div class="relative flex justify-center text-sm">
+                            <span class="px-2 bg-white dark:bg-gray-800 text-gray-500">Ou continue com</span>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <a href="http://127.0.0.1:8000/login/google" class="w-full flex justify-center py-2.5 px-4 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm bg-white dark:bg-gray-700 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors">
+                            <svg class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                            </svg>
+                            Google
+                        </a>
+                    </div>
+                </div>
             </form>
-            <p class="text-center text-sm text-gray-600 mt-6">Não tem uma conta? <button onclick="navigate('register')" class="text-blue-600 font-medium hover:underline">Cadastre-se</button></p>
+            <p class="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">Não tem uma conta? <button onclick="navigate('register')" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Cadastre-se</button></p>
         </div>
 
-        <div id="view-register" class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hidden-view fade-in">
-            <h2 class="text-2xl font-bold text-center mb-6">Criar Conta</h2>
+        <div id="view-register" class="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700 hidden-view fade-in transition-colors duration-300">
+            <h2 class="text-2xl font-bold text-center mb-6 text-gray-900 dark:text-white">Criar Conta</h2>
             <form id="form-register" class="space-y-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
-                    <input type="email" id="reg-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">E-mail</label>
+                    <input type="email" id="reg-email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
                 </div>
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
-                    <input type="password" id="reg-password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Senha</label>
+                    <div class="relative">
+                        <input type="password" id="reg-password" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 outline-none pr-10">
+                        <button type="button" onclick="togglePassword('reg-password', 'icon-reg')" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                            <svg id="icon-reg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <button type="submit" class="w-full bg-green-600 text-white font-semibold py-2.5 rounded-lg hover:bg-green-700 transition-colors">Cadastrar</button>
+                <button type="submit" class="w-full bg-green-600 dark:bg-green-500 text-white font-semibold py-2.5 rounded-lg hover:bg-green-700 dark:hover:bg-green-600 transition-colors mt-4">Cadastrar</button>
             </form>
-            <p class="text-center text-sm text-gray-600 mt-6">Já tem uma conta? <button onclick="navigate('login')" class="text-blue-600 font-medium hover:underline">Fazer Login</button></p>
+            <p class="text-center text-sm text-gray-600 dark:text-gray-400 mt-6">Já tem uma conta? <button onclick="navigate('login')" class="text-blue-600 dark:text-blue-400 font-medium hover:underline">Fazer Login</button></p>
         </div>
 
-        <div id="view-forgot-password" class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hidden-view fade-in">
-            <h2 class="text-2xl font-bold text-center mb-2">Recuperar Senha</h2>
-            <p class="text-sm text-gray-500 text-center mb-6">Enviaremos as instruções para o seu e-mail.</p>
+        <div id="view-forgot-password" class="w-full max-w-md bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700 hidden-view fade-in transition-colors duration-300">
+            <h2 class="text-2xl font-bold text-center mb-2 text-gray-900 dark:text-white">Recuperar Senha</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400 text-center mb-6">Enviaremos as instruções para o seu e-mail.</p>
             <form id="form-forgot-password" class="space-y-4">
                 <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-1">Seu E-mail</label>
-                    <input type="email" id="forgot-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Seu E-mail</label>
+                    <input type="email" id="forgot-email" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-blue-500 outline-none">
                 </div>
-                <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-2.5 rounded-lg hover:bg-blue-700 transition-colors">Enviar Instruções</button>
+                <button type="submit" class="w-full bg-blue-600 dark:bg-blue-500 text-white font-semibold py-2.5 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-600 transition-colors">Enviar Instruções</button>
             </form>
-            <button onclick="navigate('login')" class="w-full mt-4 text-sm text-gray-500 hover:text-gray-800">Voltar para o Login</button>
+            <button onclick="navigate('login')" class="w-full mt-4 text-sm text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200">Voltar para o Login</button>
         </div>
 
-        <div id="view-profile" class="w-full max-w-2xl bg-white rounded-2xl shadow-xl p-8 border border-gray-100 hidden-view fade-in self-start mt-10">
-            <h2 class="text-2xl font-bold mb-6 border-b pb-4">Meu Perfil</h2>
+        <div id="view-profile" class="w-full max-w-2xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700 hidden-view fade-in self-start mt-10 transition-colors duration-300">
+            <h2 class="text-2xl font-bold mb-6 border-b border-gray-200 dark:border-gray-700 pb-4 text-gray-900 dark:text-white">Meu Perfil</h2>
             
             <div class="mb-8">
-                <p class="text-sm text-gray-500">Logado como:</p>
-                <p id="profile-email" class="text-lg font-semibold text-gray-800"></p>
-                <span id="profile-role" class="inline-block mt-2 px-3 py-1 text-xs font-bold rounded-full bg-blue-100 text-blue-800"></span>
+                <p class="text-sm text-gray-500 dark:text-gray-400">Logado como:</p>
+                <p id="profile-email" class="text-lg font-semibold text-gray-800 dark:text-white"></p>
+                <span id="profile-role" class="inline-block mt-2 px-3 py-1 text-xs font-bold rounded-full bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200"></span>
             </div>
 
-            <div class="bg-gray-50 p-6 rounded-xl border border-gray-200 mb-6">
-                <h3 class="text-lg font-semibold mb-4">Alterar Senha</h3>
+            <div class="bg-gray-50 dark:bg-gray-700/50 p-6 rounded-xl border border-gray-200 dark:border-gray-600 mb-6">
+                <h3 class="text-lg font-semibold mb-4 text-gray-900 dark:text-white">Alterar Senha</h3>
                 <form id="form-change-password" class="space-y-4">
-                    <input type="password" id="cp-current" placeholder="Senha Atual" required class="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500">
-                    <input type="password" id="cp-new" placeholder="Nova Senha" required class="w-full px-4 py-2 border rounded-lg outline-none focus:ring-2 focus:ring-blue-500">
-                    <button type="submit" class="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-900 transition">Atualizar Senha</button>
+                    <input type="password" id="cp-current" placeholder="Senha Atual" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg outline-none focus:ring-2 focus:ring-blue-500">
+                    <input type="password" id="cp-new" placeholder="Nova Senha" required class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg outline-none focus:ring-2 focus:ring-blue-500">
+                    <button type="submit" class="bg-gray-800 dark:bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-900 dark:hover:bg-gray-500 transition">Atualizar Senha</button>
                 </form>
             </div>
 
-            <div class="bg-red-50 p-6 rounded-xl border border-red-100">
-                <h3 class="text-lg font-semibold text-red-700 mb-2">Zona de Perigo</h3>
-                <p class="text-sm text-red-600 mb-4">A exclusão da conta é permanente e não pode ser desfeita.</p>
+            <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-xl border border-red-100 dark:border-red-900/50">
+                <h3 class="text-lg font-semibold text-red-700 dark:text-red-400 mb-2">Zona de Perigo</h3>
+                <p class="text-sm text-red-600 dark:text-red-300 mb-4">A exclusão da conta é permanente e não pode ser desfeita.</p>
                 <form id="form-delete-request" class="flex gap-2">
-                    <input type="password" id="del-password" placeholder="Confirme sua senha atual" required class="flex-1 px-4 py-2 border border-red-300 rounded-lg outline-none focus:ring-2 focus:ring-red-500">
-                    <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition">Solicitar Exclusão</button>
+                    <input type="password" id="del-password" placeholder="Confirme sua senha atual" required class="flex-1 px-4 py-2 border border-red-300 dark:border-red-800/50 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg outline-none focus:ring-2 focus:ring-red-500">
+                    <button type="submit" class="bg-red-600 dark:bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition">Solicitar Exclusão</button>
                 </form>
             </div>
         </div>
 
-        <div id="view-dashboard" class="w-full max-w-6xl bg-white rounded-2xl shadow-xl border border-gray-100 hidden-view fade-in self-start mt-10 overflow-hidden">
-            <div class="bg-gray-900 text-white p-6 flex justify-between items-center">
+        <div id="view-dashboard" class="w-full max-w-6xl bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-100 dark:border-gray-700 hidden-view fade-in self-start mt-10 overflow-hidden transition-colors duration-300">
+            <div class="bg-gray-900 dark:bg-gray-950 text-white p-6 flex justify-between items-center">
                 <div>
                     <h2 class="text-2xl font-bold">Painel Administrativo</h2>
                     <p class="text-gray-400 text-sm mt-1">Gerenciamento de usuários do sistema</p>
                 </div>
-                <button onclick="carregarDashboard()" class="bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg text-sm border border-gray-700 transition">Atualizar Dados</button>
+                <button onclick="carregarDashboard()" class="bg-gray-800 dark:bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-lg text-sm border border-gray-700 transition">Atualizar Dados</button>
             </div>
             
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
-                        <tr class="bg-gray-50 text-gray-600 text-sm border-b">
+                        <tr class="bg-gray-50 dark:bg-gray-700/50 text-gray-600 dark:text-gray-300 text-sm border-b dark:border-gray-700">
                             <th class="py-4 px-6 font-medium">ID</th>
                             <th class="py-4 px-6 font-medium">Usuário</th>
                             <th class="py-4 px-6 font-medium">Cargo</th>
@@ -140,7 +168,7 @@
                             <th class="py-4 px-6 font-medium">Data de Criação</th>
                         </tr>
                     </thead>
-                    <tbody id="dashboard-table-body" class="text-sm divide-y divide-gray-100">
+                    <tbody id="dashboard-table-body" class="text-sm divide-y divide-gray-100 dark:divide-gray-700 text-gray-900 dark:text-gray-100">
                         </tbody>
                 </table>
             </div>

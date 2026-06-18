@@ -104,6 +104,20 @@ function navigate(viewName) {
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Verifica se o usuário acabou de voltar de um login social (Google/Facebook)
+    const urlParams = new URLSearchParams(window.location.search);
+    const tokenFromUrl = urlParams.get('token');
+
+    if (tokenFromUrl) {
+        // Salva o token, limpa a URL para ficar bonita e manda pro perfil
+        localStorage.setItem('token', tokenFromUrl);
+        window.history.replaceState({}, document.title, window.location.pathname);
+        showToast('Login social efetuado com sucesso!');
+        navigate('profile');
+        return;
+    }
+
+    // 2. Fluxo normal: verifica se já tem token salvo
     const token = getToken();
     if (token) navigate('profile');
     else navigate('login');
