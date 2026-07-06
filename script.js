@@ -1,5 +1,6 @@
-// script.js
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE_URL = window.location.hostname === "127.0.0.1" || window.location.hostname === "localhost"
+    ? "http://127.0.0.1:8000" 
+    : "https://api.dominio.com"; // Substituir pela URL real do backend quando fizer o deploy
 
 // --- UTILITÁRIOS ---
 function showToast(message, type = 'success') {
