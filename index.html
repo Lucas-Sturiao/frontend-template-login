@@ -141,9 +141,18 @@
             <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-xl border border-red-100 dark:border-red-900/50">
                 <h3 class="text-lg font-semibold text-red-700 dark:text-red-400 mb-2">Zona de Perigo</h3>
                 <p class="text-sm text-red-600 dark:text-red-300 mb-4">A exclusão da conta é permanente e não pode ser desfeita.</p>
+                
                 <form id="form-delete-request" class="flex gap-2">
                     <input type="password" id="del-password" placeholder="Confirme sua senha atual" required class="flex-1 px-4 py-2 border border-red-300 dark:border-red-800/50 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg outline-none focus:ring-2 focus:ring-red-500">
                     <button type="submit" class="bg-red-600 dark:bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-700 dark:hover:bg-red-600 transition">Solicitar Exclusão</button>
+                </form>
+
+                <form id="form-delete-confirm" class="flex flex-col gap-2 mt-4 hidden-view">
+                    <p class="text-xs text-red-500 font-medium">Insira o código de 6 dígitos enviado ao seu e-mail para confirmar:</p>
+                    <div class="flex gap-2">
+                        <input type="text" id="del-code" placeholder="Código de 6 dígitos" required maxlength="6" class="flex-1 px-4 py-2 border border-red-400 bg-white dark:bg-gray-700 text-gray-900 dark:text-white rounded-lg outline-none focus:ring-2 focus:ring-red-500 tracking-widest text-center font-bold">
+                        <button type="submit" class="bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-red-800 transition">Confirmar Exclusão Definitiva</button>
+                    </div>
                 </form>
             </div>
         </div>

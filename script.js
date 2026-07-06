@@ -289,7 +289,7 @@ document.getElementById('form-change-password').addEventListener('submit', async
     }
 });
 
-// 6. EXCLUIR CONTA (SOLICITAÇÃO)
+// 6. EXCLUIR CONTA (PASSO 1: SOLICITAÇÃO)
 document.getElementById('form-delete-request').addEventListener('submit', async (e) => {
     e.preventDefault();
     const senha_atual = document.getElementById('del-password').value;
@@ -307,13 +307,40 @@ document.getElementById('form-delete-request').addEventListener('submit', async 
         
         if (res.ok) {
             showToast('Código de exclusão enviado para o e-mail!');
-            // Em uma UI real, aqui abriria um modal pedindo o código para bater na rota /delete-confirm
-            document.getElementById('form-delete-request').reset();
+            // Esconde o formulário da senha e mostra o formulário do código
+            document.getElementById('form-delete-request').classList.add('hidden-view');
+            document.getElementById('form-delete-confirm').classList.remove('hidden-view');
         } else {
             showToast(data.detail, 'error');
         }
     } catch (error) {
         showToast('Erro de conexão.', 'error');
+    }
+});
+
+// 6.1 EXCLUIR CONTA (PASSO 2: CONFIRMAÇÃO DO CÓDIGO)
+document.getElementById('form-delete-confirm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const codigo_confirmacao = document.getElementById('del-code').value;
+
+    if(!confirm("AVISO CRÍTICO: Deseja mesmo apagar sua conta permanentemente?")) return;
+
+    try {
+        const res = await fetch(`${API_BASE_URL}/users/me/delete-confirm`, {
+            method: 'DELETE',
+            headers: { ...getAuthHeaders(), 'Content-Type': 'application/json' },
+            body: JSON.stringify({ codigo_confirmacao })
+        });
+        const data = await res.json();
+
+        if (res.ok) {
+            showToast('Sua conta foi excluída permanentemente.');
+            logout(); // Desloga o usuário e limpa o sistema
+        } else {
+            showToast(data.detail || 'Código inválido', 'error');
+        }
+    } catch (error) {
+        showToast('Erro de conexão ao confirmar exclusão.', 'error');
     }
 });
 
